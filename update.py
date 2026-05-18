@@ -6,6 +6,7 @@ url = subprocess.check_output(
     [
         "yt-dlp",
         "--cookies", "cookies.txt",
+        "--extractor-args", "youtube:player_client=android",
         "-g",
         YOUTUBE_URL
     ],
@@ -13,7 +14,7 @@ url = subprocess.check_output(
 ).strip()
 
 m3u = f"""#EXTM3U
-#EXTINF:-1,Animal Planet
+#EXTINF:-1,Live Channel
 {url}
 """
 
