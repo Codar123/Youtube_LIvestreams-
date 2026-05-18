@@ -3,12 +3,17 @@ import subprocess
 YOUTUBE_URL = "https://youtube.com/watch?v=RYhbprsJWUQ"
 
 url = subprocess.check_output(
-    ["yt-dlp", "-g", YOUTUBE_URL],
+    [
+        "yt-dlp",
+        "--cookies", "cookies.txt",
+        "-g",
+        YOUTUBE_URL
+    ],
     text=True
 ).strip()
 
 m3u = f"""#EXTM3U
-#EXTINF:-1,Live Channel
+#EXTINF:-1,Animal Planet
 {url}
 """
 
