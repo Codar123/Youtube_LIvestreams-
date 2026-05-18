@@ -12,8 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install yt-dlp
-        run: pip install yt-dlp
+      - name: Install dependencies
+        run: |
+          pip install yt-dlp
+          sudo apt update
+          sudo apt install -y ffmpeg
+
+      - name: Create cookies.txt
+        run: |
+          echo "${{ secrets.YOUTUBE_COOKIES }}" > cookies.txt
 
       - name: Run script
         run: python update.py
