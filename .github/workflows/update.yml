@@ -12,9 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: Install dependencies
         run: |
-          pip install yt-dlp
+          python -m pip install -U pip
+          pip install -U yt-dlp
           sudo apt update
           sudo apt install -y ffmpeg
 
